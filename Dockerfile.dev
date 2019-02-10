@@ -1,0 +1,14 @@
+FROM node:8-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm i
+
+COPY . .
+
+RUN npm uninstall ajv
+RUN npm install ajv@6.8.1
+
+CMD ["npm", "start"]
